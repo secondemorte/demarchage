@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <title>Démarchage téléphonique</title>
 <head>
     <style>
         body {
@@ -16,6 +17,7 @@
             width: fit-content;
             padding-right: 10px;
         }
+
         
         button {
             background-color: #32383f;
@@ -107,11 +109,7 @@ for(let i = 0; i < 10; i++) {
         li.appendChild(a);
         liste.appendChild(li);
     }
-</script>
-
-<button id="regenerate">Regénérer les numéros</button>
-<script>
-document.getElementById("regenerate").addEventListener("click", function() {
+    document.getElementById("prefixSelect").addEventListener("change", function() {
   liste.innerHTML = '';
   for(let i = 0; i < 10; i++) {
     let li = document.createElement("li");
@@ -133,7 +131,7 @@ document.getElementById("regenerate").addEventListener("click", function() {
         li.appendChild(a);
         liste.appendChild(li);
     }
-    });
+});
 </script>
 </body>
 </html>
