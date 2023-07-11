@@ -12,32 +12,73 @@
         }
         
         ul {
-          color: #000080;
+            color: #000080;
+            width: fit-content;
+            padding-right: 10px;
         }
         
         button {
-        background-color: #32383f;
-        color: white;
-        border: none;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px; /* Ajoutez cette ligne pour arrondir le bouton */
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Ajoutez cette ligne pour ajouter une ombre légère */
+            background-color: #32383f;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px; /* Ajoutez cette ligne pour arrondir le bouton */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Ajoutez cette ligne pour ajouter une ombre légère */
+        }
+
+        #prefixSelect {
+            background-color: rgb(21, 21, 50);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        #telephoneList {
+            list-style-type: none; /* Enlève les puces */
+            background-color: white; /* Couleur de fond blanc */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Ajoute une ombre */
+            padding: 20px; /* Ajoute un espace autour du contenu */
+        }
+        #telephoneList li {
+            padding: 10px; /* Ajoute un espace autour du contenu de chaque élément de la liste */
+            border-bottom: 1px solid #ddd; /* Ajoute une ligne de séparation entre les éléments de la liste */
+        }
+        a {
+            color: inherit; /* Hérite de la couleur du texte parent */
+            text-decoration: none; /* Supprime le soulignage */
+        }
+        a.telephone {
+            color: inherit;
+            text-decoration: none;
         }
         </style>
 </head>
 <h2>Numéros à démarcher</h2>
-
+Préfixe : 
+<select id="prefixSelect">
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+</select>
 <ul id="telephoneList"></ul>
-
 <script>
 function genererNumero() {
-  let numero = "06";
+  let prefixe = document.getElementById("prefixSelect").value;
+  let numero = prefixe;
   for(let i = 0; i < 8; i++) {
     numero += Math.floor(Math.random() * 10);
   }
@@ -49,6 +90,7 @@ let liste = document.getElementById("telephoneList");
 for(let i = 0; i < 10; i++) {
   let li = document.createElement("li");
   let a = document.createElement("a");
+  a.className = "telephone";
   a.href = "tel:" + genererNumero();
   a.textContent = genererNumero();
   a.addEventListener('click', function(e) {
@@ -74,6 +116,7 @@ document.getElementById("regenerate").addEventListener("click", function() {
   for(let i = 0; i < 10; i++) {
     let li = document.createElement("li");
     let a = document.createElement("a");
+    a.className = "telephone";
     a.href = "tel:" + genererNumero();
     a.textContent = genererNumero();
     a.addEventListener('click', function(e) {
