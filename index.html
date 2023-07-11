@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+    <style>
+        body {
+          background-color: #f7f7f7;
+        }
+        
+        h2 {
+          color: #1b1b42;
+        }
+        
+        ul {
+          color: #000080;
+        }
+        
+        button {
+        background-color: #32383f;
+        color: white;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px; /* Ajoutez cette ligne pour arrondir le bouton */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Ajoutez cette ligne pour ajouter une ombre légère */
+        }
+        </style>
+</head>
+<h2>Numéros à démarcher</h2>
+
+<ul id="telephoneList"></ul>
+
+<script>
+function genererNumero() {
+  let numero = "06";
+  for(let i = 0; i < 8; i++) {
+    numero += Math.floor(Math.random() * 10);
+  }
+  return numero;
+}
+
+let liste = document.getElementById("telephoneList");
+
+for(let i = 0; i < 10; i++) {
+  let li = document.createElement("li");
+  let a = document.createElement("a");
+  a.href = "tel:" + genererNumero();
+  a.textContent = genererNumero();
+  a.addEventListener('click', function(e) {
+    if (!a.querySelector('span')) {
+        let span = document.createElement('span');
+        span.style.backgroundColor = 'green';
+        span.style.display = 'inline-block';
+        span.style.width = '10px';
+        span.style.height = '10px';
+        span.style.marginLeft = '5px';
+        a.appendChild(span);
+    }
+    });
+        li.appendChild(a);
+        liste.appendChild(li);
+    }
+</script>
+
+<button id="regenerate">Regénérer les numéros</button>
+<script>
+document.getElementById("regenerate").addEventListener("click", function() {
+  liste.innerHTML = '';
+  for(let i = 0; i < 10; i++) {
+    let li = document.createElement("li");
+    let a = document.createElement("a");
+    a.href = "tel:" + genererNumero();
+    a.textContent = genererNumero();
+    a.addEventListener('click', function(e) {
+        if (!a.querySelector('span')) {
+            let span = document.createElement('span');
+            span.style.backgroundColor = 'green';
+            span.style.display = 'inline-block';
+            span.style.width = '10px';
+            span.style.height = '10px';
+            span.style.marginLeft = '5px';
+            a.appendChild(span);
+        }
+    });
+        li.appendChild(a);
+        liste.appendChild(li);
+    }
+    });
+</script>
+</body>
+</html>
